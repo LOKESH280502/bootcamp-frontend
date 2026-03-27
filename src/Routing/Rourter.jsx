@@ -10,9 +10,8 @@ import CreateBootcamp from "../components/CreateBootcamp";
 import UpdateBootcamp from "../components/UpdateBootcamp";
 import BootcampDetails from "../components/BootcampDetails";
 import CreateCourse from "../components/CreateCourse";
-import Threads from "../animations/Threads";
-import NotFound from "../components/NotFound";
-import LiquideCrome from "../animations/LiquideCrome";
+ import NotFound from "../components/NotFound";
+ 
 import UpdateCourse from "../components/UpdateCourse";
 import MyCourses from "../components/MyCourses";
 
@@ -24,15 +23,15 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true, // "/"
-        element: <Threads><Welcome /></Threads>,
+        element: <Welcome />,
       },
       {
         path: "register",
-        element: <Threads><Register /></Threads>
+        element: <Register />
       },
       {
         path: "login",
-        element: <Threads><Login /></Threads>
+        element: <Login />
       },
       {
         path: "dashboard", // only show after login

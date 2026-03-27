@@ -1,103 +1,41 @@
-// import React, { useContext } from "react";
-// import { Link } from "react-router-dom";
-// import { mycontext } from "./GlobalContext";
-
-// const Sidebar = () => {
-//   const { auth } = useContext(mycontext);
-
-//   return (
-//     <div className="w-50 min-h-screen text-white p-6 flex flex-col gap-6">
-
-//       {/* Public */}
-//       <Link
-//         to="/dashboard"
-//         className="p-3 rounded hover:bg-gray-800"
-//       >
-//         All Bootcamps
-//       </Link>
-
-//       {/* Publisher Only */}
-//       {auth === "publisher" && (
-//         <>
-//           <Link
-//             to="/dashboard/createBootcamp"
-//             className="p-3 rounded hover:bg-gray-800"
-//           >
-//             Create Bootcamp
-//           </Link>
-
-//           <Link
-//             to="/dashboard/updatebootcamp/:id"
-//             className="p-3 rounded hover:bg-gray-800"
-//           >
-//             Update Bootcamp
-//           </Link>
-
-//           <Link
-//             to="/dashboard/create-course"
-//             className="p-3 rounded hover:bg-gray-800"
-//           >
-//             Create Course
-//           </Link>
-
-//           <Link
-//             to="/dashboard/update-course"
-//             className="p-3 rounded hover:bg-gray-800"
-//           >
-//             Update Course
-//           </Link>
-//         </>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Sidebar;
-
+ 
 import React, { useContext } from 'react'
 import { Link } from "react-router-dom"
 import { mycontext } from './GlobalContext'
 
 const Sidebar = () => {
   let { auth } = useContext(mycontext)
+
   return (
     <>
-      <div className="w-50 min-h-screen bg-slate-900 text-slate-200 p-6 flex flex-col">
+      <div className="w-full md:w-52 min-h-auto md:min-h-screen bg-slate-900 text-slate-200 p-4 md:p-6 flex flex-row md:flex-col gap-4 md:gap-6 overflow-x-auto md:overflow-visible">
 
-        <Link className='p-3 rounded-lg hover:bg-slate-800 hover:text-white transition' to="">
+        <Link className='p-2 md:p-3 rounded-lg hover:bg-slate-800 hover:text-white transition whitespace-nowrap' to="">
           All bootcamps
         </Link>
 
-        <br /><br />
-
-        {auth == "publisher" ?
-          <Link className='p-3 rounded-lg hover:bg-slate-800 hover:text-white transition' to="/dashboard/createBootcamp">
+        {auth == "publisher" &&
+          <Link className='p-2 md:p-3 rounded-lg hover:bg-slate-800 hover:text-white transition whitespace-nowrap' to="/dashboard/createBootcamp">
             Create bootcamps
-          </Link> : ""
+          </Link>
         }
 
-        <br /><br />
-
-        {auth == "publisher" ?
-          <Link className='p-3 rounded-lg hover:bg-slate-800 hover:text-white transition' to="/dashboard/updatebootcamp/:id">
+        {auth == "publisher" &&
+          <Link className='p-2 md:p-3 rounded-lg hover:bg-slate-800 hover:text-white transition whitespace-nowrap' to="/dashboard/updatebootcamp/:id">
             Update Bootcamps
-          </Link> : ""
+          </Link>
         }
 
-        <br /><br />
-
-        {auth == "publisher" ?
-          <Link className='p-3 rounded-lg hover:bg-slate-800 hover:text-white transition' to="/dashboard/createcourse">
+        {auth == "publisher" &&
+          <Link className='p-2 md:p-3 rounded-lg hover:bg-slate-800 hover:text-white transition whitespace-nowrap' to="/dashboard/createcourse">
             Create Courses
-          </Link> : ""
+          </Link>
         }
 
-        <br /><br />
-
-        {auth == "publisher" ?
-          <Link className='p-3 rounded-lg hover:bg-slate-800 hover:text-white transition' to="/dashboard/updatecourse/:id">
+        {auth == "publisher" &&
+          <Link className='p-2 md:p-3 rounded-lg hover:bg-slate-800 hover:text-white transition whitespace-nowrap' to="/dashboard/updatecourse/:id">
             Update Course
-          </Link> : ""
+          </Link>
         }
 
       </div>

@@ -1,57 +1,4 @@
-//  import { useContext } from "react";
-//  import{mycontext} from "../components/GlobalContext"
-// import { NavLink, useLocation, useNavigate } from "react-router-dom";
  
-
-// const NavBar = () => {
- 
-//   const location = useLocation();
-//   const navigate = useNavigate();
-//   let{logtoken,setlogtoken}=useContext(mycontext)
-//   const handleLogout = () => {
-//     setlogtoken(undefined)
-//     navigate("/login");
-//   };
-
-//   return (
-//     <div className="h-20 w-full flex items-center justify-between px-10 text-white bg-black">
-//       <h1 className="text-2xl font-bold">CRUD</h1>
-
-//       <div className="flex gap-10">
-//         {/* {!isLoggedIn && location.pathname !== "/register" && ( */}
-//           <NavLink
-//             to="/register"
-//             className={({ isActive }) =>
-//               isActive ? " font-semibold" : "hover:text-gray-300"
-//             }
-//           >
-//             Register
-//           </NavLink>
-//         {/* )} */}
-
-//         {logtoken==undefined?(
-//             <NavLink
-//               to="/login"
-//               // className={({ isActive }) =>
-//               //   isActive
-//               //     ? "text-yellow-400 font-semibold"
-//               //     : "hover:text-gray-300"
-//               // }
-//             >
-//               Login
-//             </NavLink>
-          
-//         ) : (
-//           <button onClick={handleLogout} className="hover:text-gray-300">
-//             Logout
-//           </button>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default NavBar;
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { mycontext } from "./GlobalContext";
@@ -61,7 +8,6 @@ function NavBar() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  // 👇 Get user info from localStorage (saved during login)
   const userEmail = localStorage.getItem("userEmail");
   const userName = userEmail ? userEmail.split("@")[0] : "User";
 
@@ -73,18 +19,24 @@ function NavBar() {
   };
 
   return (
-    <nav className="flex justify-between items-center px-8 py-4 bg-black text-white relative shadow-md">
-      
-      {/* LOGO */}
-      <h1 className="text-xl font-bold tracking-wide">Bootcamp Portal</h1>
+    <nav className="flex justify-between items-center px-4 md:px-8 py-4 bg-black border-b border-gray-600 text-white relative shadow-md">
 
-      {/* LOGIN BUTTON */}
+      {/* LOGO */}
+      <h1 className="text-lg md:text-xl font-bold tracking-wide">
+        Bootcamp Portal
+      </h1>
+
+      {/* LOGIN / REGISTER */}
       {!auth && (
-        <><Link to="/login" className="hover:underline text-gray-300 pl-250">
-          Login
-        </Link><Link to="/register" className="hover:underline text-gray-300">
+        <div className="flex gap-4 md:gap-6 items-center">
+          <Link to="/login" className="hover:underline text-gray-300">
+            Login
+          </Link>
+
+          <Link to="/register" className="hover:underline text-gray-300">
             Register
-          </Link></>
+          </Link>
+        </div>
       )}
 
       {/* PROFILE MENU */}
@@ -92,26 +44,26 @@ function NavBar() {
         <div className="relative">
           <button
             onClick={() => setOpen(!open)}
-            className="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-full hover:bg-gray-700 transition"
+            className="flex items-center gap-2 bg-gray-800 px-3 md:px-4 py-2 rounded-full hover:bg-gray-700 transition"
           >
             <img
               src={`https://ui-avatars.com/api/?name=${userName}&background=0D8ABC&color=fff`}
               alt="avatar"
-              className="w-8 h-8 rounded-full"
+              className="w-7 h-7 md:w-8 md:h-8 rounded-full"
             />
             <span className="hidden sm:block">{userName}</span>
           </button>
 
           {open && (
-            <div className="absolute right-0 mt-3 w-56 bg-white text-black rounded-xl shadow-lg overflow-hidden z-50">
+            <div className="absolute right-0 mt-3 w-48 md:w-56 bg-white text-black rounded-xl shadow-lg overflow-hidden z-50">
 
               {/* USER INFO */}
               <div className="px-4 py-3 border-b bg-gray-50">
                 <p className="font-semibold">{userName}</p>
-                <p className="text-sm text-gray-500">{userEmail}</p>
+                <p className="text-sm text-gray-500 break-words">{userEmail}</p>
               </div>
 
-              {/* MY COURSES */}
+              {/* USER LINK */}
               {auth === "user" && (
                 <Link
                   to="/dashboard/mycourses"

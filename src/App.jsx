@@ -2,10 +2,9 @@
 import NavBar from "./components/NavBar";
 import { ToastContainer, toast } from 'react-toastify';
 import GlobalContext, {mycontext} from "./components/GlobalContext";
-import Threads from "./animations/Threads";
-function App() {
+ function App() {
   return (<> 
-  <div className="bg-black min-h-screen"> 
+  <div className="bg-black min-h-screen w-full overflow-x-hidden"> 
   <ToastContainer/>
    <GlobalContext> 
       <NavBar />
