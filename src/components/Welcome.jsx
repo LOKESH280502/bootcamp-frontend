@@ -40,7 +40,7 @@ const Welcome = () => {
       to="/login"
       className="inline-block px-6 py-3 bg-white text-black  font-semibold rounded-lg shadow-lg hover:bg-gray-600 transition"
     >
-      Get Started
+      Get Started..
     </Link>
 
   </div>
